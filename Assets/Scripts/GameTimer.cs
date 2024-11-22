@@ -9,7 +9,7 @@ public class GameTimer : NetworkBehaviour
 {
     [SerializeField]
     private TMP_Text uiLabel;
-    private NetworkVariable<float> gameTimer = new NetworkVariable<float>(100f);
+    private NetworkVariable<float> gameTimer = new NetworkVariable<float>(30f);
 
     public override void OnNetworkSpawn(){
         base.OnNetworkSpawn();
@@ -34,6 +34,7 @@ public class GameTimer : NetworkBehaviour
 
     [Rpc(SendTo.ClientsAndHost)]
     void TimerExpiredClientRpc(String message){
+        gameTimer.OnValueChanged -= gameTimer_OnValueChanged;
         uiLabel.text = message;
     }
         
