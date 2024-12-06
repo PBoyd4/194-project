@@ -1,4 +1,0 @@
-repository "comp194-multiplayer-example@china1223-126-com@cloud.cn"
-  path "/"
-    br "/main"
-    co "/main"
